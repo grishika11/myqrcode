@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <style>
+   	.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:90%;
+    position:absolute;
+}
+.banner-area {
+  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("{% static 'images/bennar2.png' %}");
+  background-position: center center;
+  background-size: cover;
+  text-align: center;
+  color: #ffffff;
+  padding: 130px;
+  margin-top: -20px;
+  
+  /*------------------footer-----------------------------*/
+
+
+} 
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.footer-col{
+	width: 30%;
+	padding: 0 25px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	margin-bottom: 20px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	}
+
+.footer-col ul li:not(:last-child){
+
+	margin-bottom: 10px;
+}
+
+.footer-col ul li a{
+	font-size: 16px;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+}
+
+/*===responsive=====*/
+@media(max-width: 767px){
+	.footer-col{
+		margin-left: 30px;
+		width: 50%;
+		margin-bottom: 30px;
+	}
+}
+@media(max-width: 574px){
+	.footer-col{
+		width: 100%;
+	
+	}
+}
+
+ @media(max-width: 574px){
+ .container{
+
+  width: 80%;
+  margin-left: 40px;
+  
+
+}
+/*-----------------header----------------------*/
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {
+  	float: none;
+  	margin-bottom: -50px;
+  	font-size: 5px;
+
+
+  }
+
+}
+
+
+ 
+ 
+   </style>
+</head>
+
+<body>
+
+<div class="header">
+ <div class="social-icons">
+   <div class="top-icons">
+     <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+               <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    
+
+   </div>
+ </div>
+
+</div>
+
+  <nav class="navbar navbar-default" style="position: sticky; top: 0;">
+
+	
+  	<img src="{% static 'images/VMCODER.png' %}" alt="No Image" style="width: 150px; margin-left: 10px; margin-top: 10px;">
+  
+   <ul class = "topnav">
+     <li><a href="https://www.vmcoder.com/">Home</a></li>
+     <li><a href="https://www.vmcoder.com/about-vm-coder-technology">About</a></li>
+     <li><a href="https://training.vmcoder.com/">Training</a></li>
+     <li><a href="https://www.vmcoder.com/career-at-vmcoder-technology">career</a></li>
+     <li><a href="https://blog.vmcoder.com/">Blog</a></li>
+     <li><a href="https://www.vmcoder.com/contact-us">Contact</a></li>
+
+   </ul>
+ </nav>
+<div class = 'banner-area'>
+	
+</div>
+<br><br>
+<div class="container">
+	<h1> GENERATE YOUR QR CODE</h1>
+<br><br>
+<form action="/send" method="post">
+          {% csrf_token %}
+
+	<h2>Enter Your Data</h2>
+<br>
+<div class="user-details">
+ <div class="input_box">
+	<input type="text" name="data" id="Entry" placeholder="Enter here......">
+</div>
+
+<br>
+<div class="button">
+<input type="submit" value="Generate QR Code" id = btn>
+</div>
+
+</form>
+</div>
+<br><br>
+			
+			  		{% if data %}
+          			<center><img src="{{ MEDIA_URL }}{% static 'images/test.png' %}" alt="No Image" style="width: 200px; height: 200px;" ></center>
+      				{% else %}
+          			<center><h1 style="border: 2px solid #000000; width: 200px; height: 200px;">Please Enter your data</h1></center>
+      				{% endif %}
+
+			  		
+					
+</div>
+<br><br>
+<footer class="footer" style="background-color: #24262b; padding: 70px 0;">
+	<div class="container1" style="max-width: 1170px; margin: auto;">
+		<div class="row">
+			<div class="footer-col">
+				<h4><u>QUICK CONTACT</u></h4>
+					<ul>
+						<li><a href="#"><i class="fa fa-phone"></i>&nbsp;&nbsp;+91 7827 525 258</a> </li>
+						<li><a href="#"><i class="fa fa-phone"></i>&nbsp;&nbsp;+91 0120-4160773</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;info@vmcoder.com</a> </li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;vmcodertechnology@gmail.com</a></li>
+						<li><a href="#"><i class="fa fa-building"></i>&nbsp;&nbsp;C-217, B-2, Sector-63 Noida, <br>&nbsp;&nbsp;&nbsp;&nbsp;Uttar Pradesh Noida 201309, <br>&nbsp;&nbsp;&nbsp;&nbsp;INDIA</a></li>
+					</ul>
+				
+			</div>
+			
+			<div class="footer-col">
+				<h4><u>INTERNSHIP</u></h4>
+					<ul>
+						<li><a href="https://www.vmcoder.com/course/digital-marketing-internship/9">Digital Marketing</a></li>
+						<li><a href="https://www.vmcoder.com/course/php-development-internship/2">Php Development Internship</a></li>
+						<li><a href="https://www.vmcoder.com/course/application-development-internship/4">Application Development</a></li>
+						<li><a href="https://www.vmcoder.com/course/web-designing-internship/8">Web Designing Internship</a></li>
+						<li><a href="https://www.vmcoder.com/course/aspnet-internship/5">Asp .Net Framework</a></li>
+						<li><a href="https://www.vmcoder.com/course/java-development-internship/1">Java Development Internship</a></li>
+
+					</ul>
+				
+			</div>
+
+			
+
+			<div class="footer-col">
+				<h4>FOLLOW US ON GOOGLE MAP</h4>
+					<ul>
+						<div class="map-responsive">
+     					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.5378611448245!2d77.31302231424728!3d28.583636982437113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce545e8e3d255%3A0x56e07cf92b8dca7b!2sVMCODER%20TECHNOLOGY!5e0!3m2!1sen!2sin!4v1616387720051!5m2!1sen!2sin" width="350" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+   				</div>
+					</ul>
+				
+			</div>
+		</div>
+		
+	</div>
+
+</footer>
+<div class="copy">
+	<p style="text-align: center;">Copyright ©2019 Vmcoder Technology All Rights Reserved</p>
+</div>
+</body>
+
+</html>
